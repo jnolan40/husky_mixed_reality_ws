@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>husky_vicon_link</name>
+  <version>0.0.0</version>
+  <description>The husky_vicon_link package</description>
+
+  <maintainer email="james.nolan@todo.todo">james.nolan</maintainer>
+
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf</depend>
+  <depend>cmake_modules</depend> 
+  <depend>vicon_bridge</depend>
+  
+  <build_depend>roslaunch</build_depend>
+  <build_depend>message_generation</build_depend>
+  
+  <exec_depend>message_runtime</exec_depend>
+
+</package>

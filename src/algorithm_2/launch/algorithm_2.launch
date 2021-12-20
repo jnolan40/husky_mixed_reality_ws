@@ -1,0 +1,9 @@
+<launch>
+
+  <node name="sim_gps_processor" pkg="algorithm_2" type="sim_gps_processor" output = "screen">
+  </node>
+
+  <node name="sim_algorithm_2" pkg="algorithm_2" type="sim_algorithm_2" output = "screen">
+  </node>
+
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="sim_algorithm_1" pkg="algorithm_1" type="sim_algorithm_1" output = "screen">
+  </node>
+
+</launch>
