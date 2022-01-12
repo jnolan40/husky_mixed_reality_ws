@@ -16,7 +16,7 @@ void gps_define(const sensor_msgs::NavSatFix &msg)
   pose.x = latitude;
   pose.y = longitude;
   pose.theta = heading_rad;
-  
+  ROS_INFO("Publishing compiled GPS data");
   compiled_gps.publish(pose); 
 }
 
@@ -24,6 +24,7 @@ void heading_define(const geometry_msgs::Point &msg)
 {
   double heading_deg = msg.z;
   heading_rad = heading_deg*M_PI/180;
+  //ROS_INFO("debugging");
 }
 
 int main(int argc, char** argv) {

@@ -1,10 +1,4 @@
-#include <ros/ros.h>
-#include "tf/transform_datatypes.h"
-#include <math.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <geometry_msgs/Point.h>
-#include <sensor_msgs/NavSatFix.h>
-
+#include <mixed_reality_library/mixed_reality_library.h>
 
 // Variables
 

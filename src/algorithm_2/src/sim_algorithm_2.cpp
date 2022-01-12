@@ -100,7 +100,7 @@ void nav_control(const geometry_msgs::Pose2D &msg)
 }
 
 int main(int argc, char** argv) {
-  ros::init(argc, argv, "sim_algorithm_1");
+  ros::init(argc, argv, "sim_algorithm_2");
   ros::NodeHandle n;
 
   // Get estimates for current lat, long, and heading, and call functions

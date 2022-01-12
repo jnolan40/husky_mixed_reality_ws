@@ -27,5 +27,4 @@ include_directories(
 add_executable(sim_algorithm_2 src/sim_algorithm_2.cpp)
 target_link_libraries(sim_algorithm_2 ${catkin_LIBRARIES})
 
-add_executable(sim_gps_processor src/sim_gps_processor.cpp)
-target_link_libraries(sim_gps_processor ${catkin_LIBRARIES})
+

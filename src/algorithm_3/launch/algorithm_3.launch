@@ -1,0 +1,15 @@
+<launch>
+
+  <node name="simulated_gps" pkg="simulated_gps" type="simulated_gps" output = "screen">
+  </node>
+
+  <node name="sim_gps_processor" pkg="simulated_gps" type="sim_gps_processor" output = "screen">
+  </node>
+
+  <node name="a_star" pkg="algorithm_3" type="a_star" output = "screen">
+  </node>
+
+  <node name="sim_algorithm_3" pkg="algorithm_3" type="sim_algorithm_3" output = "screen">
+  </node>
+
+</launch>
