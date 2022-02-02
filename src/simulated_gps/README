@@ -1,0 +1,1 @@
+To combine hpposllh and relpos2D data, run gps_message_combiner.py. It will publish the lat, lon, and heading on the topic /UBX/Combined.

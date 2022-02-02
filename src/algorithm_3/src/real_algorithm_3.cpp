@@ -1,5 +1,6 @@
 // This code is an closed-loop GPS waypoint navigation code that uses the Pure Pursuit algorithm to track 
 #include "mixed_reality_library/mixed_reality_library.h"
+
 using namespace std;
 
 // Publisher and Subscribers
@@ -27,7 +28,7 @@ void cross_track_error(int P, int P1, double lP, double lP1)
   double t_now = ros::Time::now().toSec();
   double t_elapsed = t_now - t_start;
   fstream cross_track_error;
-  cross_track_error.open("cross_track_error.txt", ios_base::app);
+  cross_track_error.open("cross_track_errorLD2trash.txt", ios_base::app);
   ROS_INFO("l = %f", l);
   cross_track_error << t_elapsed << ", " << l << endl;
   cross_track_error.close();
@@ -72,7 +73,7 @@ int find_goal_point(double a, double b)
       G = dist.size() - 1;
       j = 1;
     }
-    int LD = 1; //lookahead distance in meters
+    int LD = 2; //lookahead distance in meters
     if(dist[i+1] > LD)
     {
       G = i + 1;
@@ -116,6 +117,7 @@ void get_path(const nav_msgs::Path &msg2)
   t_start = ros::Time::now().toSec();
   }
   path_init = 1;
+  //ROS_INFO("path received");
 }
 
 void follow_path(const geometry_msgs::Pose2D &msg)
@@ -162,18 +164,18 @@ void follow_path(const geometry_msgs::Pose2D &msg)
   }
   husky_twist_control.publish(command);
   int size = path_lat.size() - 1;
-  ROS_INFO("G = %d, size = %d", G, size);
+  ROS_INFO("G = %d, size = %d, xg = %f, yg = %f", G, size, xg, yg);
   }
 }
 
 int main(int argc, char** argv) {
-  ros::init(argc, argv, "sim_algorithm_3");
+  ros::init(argc, argv, "real_algorithm_3");
   ros::NodeHandle n;
   // Get path gps path information
   path_sub = n.subscribe("gps_path", 500, get_path);
   // Get estimates for current lat, long, and heading, and call function
-  gps_sub = n.subscribe("/sim_compiled_gps", 500, follow_path);
+  gps_sub = n.subscribe("/UBX/Combined", 500, follow_path);
   // Publish velocity commands to the robot
-  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky/husky_velocity_controller/cmd_vel", 1000);
+  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky_velocity_controller/1cmd_vel", 1000);
   ros::spin();
 }

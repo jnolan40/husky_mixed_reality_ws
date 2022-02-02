@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   mixed_reality_library
+  ubxtranslator
 )
 
 catkin_package(
@@ -23,5 +24,5 @@ include_directories(
 add_executable(simulated_gps src/simulated_gps.cpp)
 target_link_libraries(simulated_gps ${catkin_LIBRARIES})
 
-add_executable(sim_gps_processor src/sim_gps_processor.cpp)
-target_link_libraries(sim_gps_processor ${catkin_LIBRARIES})
+#add_executable(real_gps_processor src/real_gps_processor.cpp)
+#target_link_libraries(real_gps_processor ${catkin_LIBRARIES})

@@ -22,6 +22,12 @@ include_directories(
 add_executable(sim_algorithm_3 src/sim_algorithm_3.cpp)
 target_link_libraries(sim_algorithm_3 ${catkin_LIBRARIES})
 
+add_executable(mr_algorithm_3 src/mr_algorithm_3.cpp)
+target_link_libraries(mr_algorithm_3 ${catkin_LIBRARIES})
+
+add_executable(real_algorithm_3 src/real_algorithm_3.cpp)
+target_link_libraries(real_algorithm_3 ${catkin_LIBRARIES})
+
 add_executable(a_star src/a_star.cpp)
 target_link_libraries(a_star ${catkin_LIBRARIES})
 

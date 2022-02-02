@@ -42,8 +42,8 @@ void vicon_pose_cb(const geometry_msgs::TransformStamped &msg) {
   //Creating the message to control simulated Husky location in Phoenix/Unity
   //worldframe coordinates.
 
-  double xscale = 2; double yscale = 2; double thetascale = 1;
-  double x0 = 75; double y0 = 0; 	//position in Unity map to start
+  double xscale = 1; double yscale = 1; double thetascale = 1;
+  double x0 = 90.5; double y0 = -10; 	//position in Unity map to start
 
   double x = x0 + xscale*(vicon_pose_husframe.x);	
   double y = y0 + yscale*(vicon_pose_husframe.y);	

@@ -167,13 +167,13 @@ void follow_path(const geometry_msgs::Pose2D &msg)
 }
 
 int main(int argc, char** argv) {
-  ros::init(argc, argv, "sim_algorithm_3");
+  ros::init(argc, argv, "mr_algorithm_3");
   ros::NodeHandle n;
   // Get path gps path information
   path_sub = n.subscribe("gps_path", 500, get_path);
   // Get estimates for current lat, long, and heading, and call function
   gps_sub = n.subscribe("/sim_compiled_gps", 500, follow_path);
   // Publish velocity commands to the robot
-  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky/husky_velocity_controller/cmd_vel", 1000);
+  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky_velocity_controller/cmd_vel", 1000);
   ros::spin();
 }
