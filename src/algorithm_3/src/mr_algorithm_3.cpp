@@ -27,7 +27,7 @@ void cross_track_error(int P, int P1, double lP, double lP1)
   double t_now = ros::Time::now().toSec();
   double t_elapsed = t_now - t_start;
   fstream cross_track_error;
-  cross_track_error.open("cross_track_error.txt", ios_base::app);
+  cross_track_error.open("mr_cross_track_errorLD05t3.txt", ios_base::app);
   ROS_INFO("l = %f", l);
   cross_track_error << t_elapsed << ", " << l << endl;
   cross_track_error.close();
@@ -72,7 +72,7 @@ int find_goal_point(double a, double b)
       G = dist.size() - 1;
       j = 1;
     }
-    int LD = 1; //lookahead distance in meters
+    int LD = 0.5; //lookahead distance in meters
     if(dist[i+1] > LD)
     {
       G = i + 1;
@@ -91,6 +91,7 @@ double goal_coordinate_transform(double latitude, double longitude, double headi
   double theta = -(heading_rad - M_PI/2);
   *xg = xgn*sin(theta) + ygn*cos(theta); // meters in front of robot
   *yg = -xgn*cos(theta) + ygn*sin(theta); // meters to left of robot
+  return(0);
 }
 
 void get_path(const nav_msgs::Path &msg2)

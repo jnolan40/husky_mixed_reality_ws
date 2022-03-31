@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   mixed_reality_library
+  ubxtranslator
 )
 
 catkin_package(
@@ -31,5 +32,11 @@ target_link_libraries(real_algorithm_3 ${catkin_LIBRARIES})
 add_executable(a_star src/a_star.cpp)
 target_link_libraries(a_star ${catkin_LIBRARIES})
 
+add_executable(expt_astar src/expt_astar.cpp)
+target_link_libraries(expt_astar ${catkin_LIBRARIES})
+
 add_executable(testr3 src/testr3.cpp)
 target_link_libraries(testr3 ${catkin_LIBRARIES})
+
+add_executable(data_harvester src/data_harvester.cpp)
+target_link_libraries(data_harvester ${catkin_LIBRARIES})

@@ -24,5 +24,8 @@ include_directories(
 add_executable(sim_algorithm_1 src/sim_algorithm_1.cpp)
 target_link_libraries(sim_algorithm_1 ${catkin_LIBRARIES})
 
+add_executable(real_algorithm_1 src/real_algorithm_1.cpp)
+target_link_libraries(real_algorithm_1 ${catkin_LIBRARIES})
+
 add_executable(test_include_library src/test_include_library.cpp)
 target_link_libraries(test_include_library ${catkin_LIBRARIES})

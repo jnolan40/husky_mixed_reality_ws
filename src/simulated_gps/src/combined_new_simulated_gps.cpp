@@ -57,17 +57,23 @@ void gps_publish(const geometry_msgs::PoseStamped &msg)
 ROS_INFO(" %f, %f, %f,", noise, x_meters_noisy, y_meters_noisy);
 
 }
-
+// edited version
 
 int main (int argc, char** argv) {
   ros::init(argc, argv, "simulated_gps");
   ros::NodeHandle n;
+  while (ros::ok())
+  {
+     // get estimates for current pose and heading and write global variables
+     gnd_truth_sub = n.subscribe("/unity_command/ground_truth/husky/pose", 10, gps_publish);
+    ros::Rate loop_rate(100);
+    ros::spinOnce();
+    loop_rate.sleep();}
   
-  // get estimates for current pose and heading and write global variables
-  gnd_truth_sub = n.subscribe("/unity_command/ground_truth/husky/pose", 10, gps_publish);
-
   sim_gps_pub = n.advertise<sensor_msgs::NavSatFix>("/sim_gps", 10);
   sim_heading_pub = n.advertise<geometry_msgs::Point>("/sim_heading", 10);
   
-  ros::spin();
+  ros::spin(); // this line is not in original example code.. might be an issue
+return 0;
 }
+

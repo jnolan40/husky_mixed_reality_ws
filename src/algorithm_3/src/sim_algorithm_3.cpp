@@ -91,6 +91,7 @@ double goal_coordinate_transform(double latitude, double longitude, double headi
   double theta = -(heading_rad - M_PI/2);
   *xg = xgn*sin(theta) + ygn*cos(theta); // meters in front of robot
   *yg = -xgn*cos(theta) + ygn*sin(theta); // meters to left of robot
+  return(0);
 }
 
 void get_path(const nav_msgs::Path &msg2)
@@ -114,6 +115,7 @@ void get_path(const nav_msgs::Path &msg2)
   }
   }
   t_start = ros::Time::now().toSec();
+  ROS_INFO("Path Received");
   }
   path_init = 1;
 }

@@ -1,0 +1,9 @@
+<launch>
+
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard" output = "screen">
+  </node>
+
+  <node name= "robot_keyboard_control" pkg="robot_keyboard_control" type="robot_keyboard_control" output = "screen">
+  </node>
+
+</launch>

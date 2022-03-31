@@ -28,7 +28,7 @@ void cross_track_error(int P, int P1, double lP, double lP1)
   double t_now = ros::Time::now().toSec();
   double t_elapsed = t_now - t_start;
   fstream cross_track_error;
-  cross_track_error.open("cross_track_errorLD2trash.txt", ios_base::app);
+  cross_track_error.open("real_cross_track_errorLD3.txt", ios_base::app);
   ROS_INFO("l = %f", l);
   cross_track_error << t_elapsed << ", " << l << endl;
   cross_track_error.close();
@@ -73,7 +73,7 @@ int find_goal_point(double a, double b)
       G = dist.size() - 1;
       j = 1;
     }
-    int LD = 2; //lookahead distance in meters
+    int LD = 3; //lookahead distance in meters
     if(dist[i+1] > LD)
     {
       G = i + 1;
@@ -126,7 +126,8 @@ void follow_path(const geometry_msgs::Pose2D &msg)
   {
   double latitude = msg.x;
   double longitude = msg.y;
-  double heading_rad = msg.theta;
+  double heading_deg = msg.theta;
+  double heading_rad = heading_deg*M_PI/180;
   int G = find_goal_point(latitude, longitude);
   double xg, yg;
   goal_coordinate_transform(latitude, longitude, heading_rad, G, &xg, &yg);
@@ -176,6 +177,6 @@ int main(int argc, char** argv) {
   // Get estimates for current lat, long, and heading, and call function
   gps_sub = n.subscribe("/UBX/Combined", 500, follow_path);
   // Publish velocity commands to the robot
-  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky_velocity_controller/1cmd_vel", 1000);
+  husky_twist_control = n.advertise<geometry_msgs::Twist>("/husky_velocity_controller/cmd_vel", 1000);
   ros::spin();
 }
